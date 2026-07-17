@@ -1,7 +1,13 @@
+
 import streamlit as st
+import google.generativeai as genai
 
 st.set_page_config(page_title="Celestara", page_icon="✨")
 st.markdown("<h1 style='text-align: center;'>Celestara</h1>", unsafe_allow_html=True)
+
+# API anahtarını tanımla
+genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
+model = genai.GenerativeModel('gemini-pro')
 
 karakter = st.radio("İletişim Kurulacak Birim:", ["Lara", "Ares"], horizontal=True)
 
@@ -18,4 +24,7 @@ if prompt := st.chat_input(f"{karakter} ile konuş..."):
         st.markdown(prompt)
 
     with st.chat_message("assistant"):
-        st.markdown(f"*{karakter} şu an dinleniyor. Yarın kota yenilendiğinde aktif olacak.*")
+        # Yapay zekaya karakteri tanımlayarak mesajı gönderiyoruz
+        response = model.generate_content(f"Sen {karakter} isimli bir asistansın. Kullanıcıya bu karakterin kişiliğiyle cevap ver: {prompt}")
+        st.markdown(response.text)
+        st.session_state.messages.append({"role": "assistant", "content": response.text})

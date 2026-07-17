@@ -5,7 +5,7 @@ st.set_page_config(page_title="Celestara", page_icon="✨")
 st.markdown("<h1 style='text-align: center;'>Celestara</h1>", unsafe_allow_html=True)
 
 # Kendi AIza ile başlayan anahtarını buraya yapıştır
-genai.configure(api_key="AIza.Ab8RN6Ig9AJLpMn2_G9-eUwQl6Ife0e-DbvDW5r2RCXUN_onrw") 
+genai.configure(api_key="AQ.Ab8RN6Ig9AJLpMn2_G9-eUwQl6Ife0e-DbvDW5r2RCXUN_onrw") 
 
 # 'gemini-pro' yerine 'gemini-1.5-flash' kullanmak daha kararlıdır
 model = genai.GenerativeModel('gemini-1.5-flash')

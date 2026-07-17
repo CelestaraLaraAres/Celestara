@@ -8,7 +8,7 @@ st.markdown("<h1 style='text-align: center;'>Celestara</h1>", unsafe_allow_html=
 genai.configure(api_key="AQ.Ab8RN6Ig9AJLpMn2_G9-eUwQl6Ife0e-DbvDW5r2RCXUN_onrw") 
 
 # 'gemini-pro' yerine 'gemini-1.5-flash' kullanmak daha kararlıdır
-model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.GenerativeModel('gemini-pro')
 
 karakter = st.radio("İletişim Kurulacak Birim:", ["Lara", "Ares"], horizontal=True)
 

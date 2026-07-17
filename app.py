@@ -1,7 +1,19 @@
 
 import streamlit as st
 import google.generativeai as genai
+import os
 
+# API anahtarını güvenli bir şekilde al
+api_key = st.secrets.get("GOOGLE_API_KEY")
+
+if not api_key:
+    st.error("Hata: GOOGLE_API_KEY bulunamadı! Lütfen Streamlit Secrets ayarlarını kontrol et.")
+    st.stop()
+
+genai.configure(api_key=api_key)
+model = genai.GenerativeModel('gemini-pro')
+
+# ... kodunun geri kalanı aynı şekilde devam etsin ...
 st.set_page_config(page_title="Celestara", page_icon="✨")
 st.markdown("<h1 style='text-align: center;'>Celestara</h1>", unsafe_allow_html=True)
 

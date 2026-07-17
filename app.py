@@ -5,7 +5,7 @@ st.set_page_config(page_title="Celestara", page_icon="✨")
 st.markdown("<h1 style='text-align: center;'>Celestara</h1>", unsafe_allow_html=True)
 
 # Doğrudan anahtarı buraya gömüyoruz (Test amaçlı)
-genai.configure(api_key="AQ.Ab8RN6Ig9AJLpMn2_G9-eUwQl6Ife0e-DbvDW5r2RCXUN_onrw")
+genai.configure(api_key="AIza.Ab8RN6Ig9AJLpMn2_G9-eUwQl6Ife0e-DbvDW5r2RCXUN_onrw")
 model = genai.GenerativeModel('gemini-pro')
 
 karakter = st.radio("İletişim Kurulacak Birim:", ["Lara", "Ares"], horizontal=True)

@@ -4,9 +4,11 @@ import google.generativeai as genai
 st.set_page_config(page_title="Celestara", page_icon="✨")
 st.markdown("<h1 style='text-align: center;'>Celestara</h1>", unsafe_allow_html=True)
 
-# Doğrudan anahtarı buraya gömüyoruz (Test amaçlı)
-genai.configure(api_key="AIza.Ab8RN6Ig9AJLpMn2_G9-eUwQl6Ife0e-DbvDW5r2RCXUN_onrw")
-model = genai.GenerativeModel('gemini-pro')
+# Kendi AIza ile başlayan anahtarını buraya yapıştır
+genai.configure(api_key="AIza.Ab8RN6Ig9AJLpMn2_G9-eUwQl6Ife0e-DbvDW5r2RCXUN_onrw") 
+
+# 'gemini-pro' yerine 'gemini-1.5-flash' kullanmak daha kararlıdır
+model = genai.GenerativeModel('gemini-1.5-flash')
 
 karakter = st.radio("İletişim Kurulacak Birim:", ["Lara", "Ares"], horizontal=True)
 
@@ -24,7 +26,8 @@ if prompt := st.chat_input(f"{karakter} ile konuş..."):
 
     with st.chat_message("assistant"):
         try:
-            response = model.generate_content(f"Sen {karakter} isimli bir asistansın. Kişiliğinle cevap ver: {prompt}")
+            # Sistem talimatını düzgün bir formata alıyoruz
+            response = model.generate_content(f"Sen {karakter} isimli bir asistansın. Kişiliğinle cevap ver. Kullanıcının mesajı: {prompt}")
             st.markdown(response.text)
             st.session_state.messages.append({"role": "assistant", "content": response.text})
         except Exception as e:
